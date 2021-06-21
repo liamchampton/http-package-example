@@ -13,5 +13,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(resp)
+	// 'make' takes a type of a slice and number of elements we want it to be initialised with
+	byteSlice := make([]byte, 99999) // "give me an empty byte slice with space for 99999 elements"
+
+	// read the body of the response into the byte slice
+	resp.Body.Read(byteSlice)
+
+	// print out the byte slice which contains all the html in the body of the response
+	fmt.Println(string(byteSlice))
 }
